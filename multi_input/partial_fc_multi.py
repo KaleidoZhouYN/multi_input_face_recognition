@@ -183,14 +183,16 @@ class PartialFC(torch.nn.Module):
             torch.zeros((batch_size, 4*self.embedding_size)).cuda()
             for _ in range(self.world_size)
         ]
+
+        # here we need each tuple has the same label,so the shape is [bs,1]
         _gather_labels = [
-            torch.zeros(batch_size,4).long().cuda() for _ in range(self.world_size)
+            torch.zeros(batch_size,1).long().cuda() for _ in range(self.world_size)
         ]
         _list_embeddings = AllGather(local_embeddings, *_gather_embeddings)
         distributed.all_gather(_gather_labels, local_labels)
 
         embeddings = torch.cat(_list_embeddings) # [n,4*c]
-        labels = torch.cat(_gather_labels) #[n,4]
+        labels = torch.cat(_gather_labels) #[n,1]
 
         labels = labels.view(-1, 1)
         index_positive = (self.class_start <= labels) & (
@@ -201,6 +203,9 @@ class PartialFC(torch.nn.Module):
 
         if self.sample_rate < 1:
             self.sample(labels, index_positive, optimizer)
+
+        # we expand the label from [bs,1] to [bs,4] and reshape to (bs*4,1)
+        labels = labels.expand(labels.shape[0],4).reshape(-1,1)
 
 
         with torch.cuda.amp.autocast(self.fp16):
