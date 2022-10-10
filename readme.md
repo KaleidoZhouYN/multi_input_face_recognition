@@ -30,8 +30,8 @@
 
 similarity between p1 & p2(same person)
 
-|   |![p1_0](./demo/p1/0.jpg)|![p1_1](./demo/p1/1.jpg)|![p1_2](./demo/p1/2.jpg)|
+|   |![p1_0](./multi_input/demo/p1/0.jpg)|![p1_1](./multi_input/demo/p1/1.jpg)|![p1_2](.multi_input/demo/p1/2.jpg)|
 |:-:|:-:|:-:|:-:|
-|![p2_0](./demo/p2/0.jpg)| | | |
-|![p2_1](./demo/p2/1.jpg)| | | |
-|![p2_2](./demo/p2/2.jpg)| | | |
+|![p2_0](./multi_input/demo/p2/0.jpg)| | | |
+|![p2_1](./multi_input/demo/p2/1.jpg)| | | |
+|![p2_2](./multi_input/demo/p2/2.jpg)| | | |
