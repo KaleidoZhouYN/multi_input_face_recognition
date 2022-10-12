@@ -9,7 +9,17 @@ our repo finds a way concatenating multiple face input together to get a more ac
 
 # algo
 
-to do 
+we construct a Quadruple,in each Quadruple, the first 3 sample is random select from the same person and the 4th sample is a combination of the first 3 images.
+
+![](./pic/2.jpg)
+
+look into ./multi_input/dataset_multi.py line74-148 for detail implementation.
+
+As the combined iamged contains more information than each single image, so the probobility(classification logits) should meet this requirement:
+
+logits(combine) > max(logits_1,logits_2,logits_3)
+
+look into ./multi_input/partial_fc_multi.py line509-575 for detail implementation
 
 # how to 
 > \$ git clone --recurse-submodules git@github.com:KaleidoZhouYN/multi_input_face_recognition.git
