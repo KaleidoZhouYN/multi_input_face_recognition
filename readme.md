@@ -1,3 +1,16 @@
+# basic ideas
+consider our face can be represent by a set of {xyz} points
+
+![](./pic/1.jpg)
+
+while the front face only contains the {xy} information, and side face only contains {yz} information.
+
+our repo finds a way concatenating multiple face input together to get a more accurate represent of the face feature(just like waht Apple FaceID did)
+
+# algo
+
+to do 
+
 # how to 
 > \$ git clone --recurse-submodules git@github.com:KaleidoZhouYN/multi_input_face_recognition.git
 
