@@ -3,7 +3,7 @@
 
 ## test
 
-1. download r100 model checkpoint to multi_input/work_dirs/ms1m_r100:
+1. download r100 model checkpoint to multi_input/work_dirs/ms1mv3_r100:
 
     https://drive.google.com/file/d/1JSfz28fAE8kDNg4L_PgF9wSLL5JUKJ9Z/view?usp=sharing
 
@@ -30,8 +30,12 @@
 
 similarity between p1 & p2(same person)
 
-|   |![p1_0](./multi_input/demo/p1/0.jpg)|![p1_1](./multi_input/demo/p1/1.jpg)|![p1_2](.multi_input/demo/p1/2.jpg)|
+|   |![p1_0](./multi_input/demo/p1/0.jpg)|![p1_1](./multi_input/demo/p1/1.jpg)|![p1_2](./multi_input/demo/p1/2.jpg)|
 |:-:|:-:|:-:|:-:|
-|![p2_0](./multi_input/demo/p2/0.jpg)| | | |
-|![p2_1](./multi_input/demo/p2/1.jpg)| | | |
-|![p2_2](./multi_input/demo/p2/2.jpg)| | | |
+|![p2_0](./multi_input/demo/p2/0.jpg)|0.718 |0.714 | 0.664|
+|![p2_1](./multi_input/demo/p2/1.jpg)|0.608 |0.565 | 0.509|
+|![p2_2](./multi_input/demo/p2/2.jpg)|0.729 |0.713 | 0.556|
+
+similarity use add combine(f=f1+f2+f3 used in insightface): 0.743
+
+similarity use multi_input(this repo): 0.876

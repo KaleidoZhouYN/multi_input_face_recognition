@@ -6,7 +6,7 @@ def get_config(config_file):
     assert config_file.startswith('configs/'), 'config file setting must start with configs/'
     temp_config_name = osp.basename(config_file)
     temp_module_name = osp.splitext(temp_config_name)[0]
-    config = importlib.import_module("configs.base")
+    config = importlib.import_module("configs_multi.base")
     cfg = config.config
     config = importlib.import_module("configs_multi.%s" % temp_module_name)
     job_cfg = config.config

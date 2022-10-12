@@ -4,7 +4,7 @@ import cv2
 import os
 
 import sys
-pwd = os.path.dirname(__file__)
+pwd = os.path.abspath(os.path.dirname(__file__))
 
 insightface_path = os.path.abspath(os.path.join(pwd,'..','..','face_recognition','insightface'))
 sys.path.insert(0,os.path.join(insightface_path,'recognition','arcface_torch'))
@@ -15,8 +15,8 @@ from utils_multi.utils_config import get_config
 config = 'configs/ms1mv3_r100'
 cfg = get_config(config)
 backbone = get_model(cfg.network, dropout=0.0, fp16=cfg.fp16, num_features=cfg.embedding_size)
-dict_checkpoint = torch.load(os.path.join(cfg.output, f"checkpoint_gpu_{0}.pt"))
-backbone.load_state_dict(dict_checkpoint["state_dict_backbone"])
+dict_checkpoint = torch.load(os.path.join(cfg.output, f"model.pt"))
+backbone.load_state_dict(dict_checkpoint)
 backbone.eval()
 
 p1 = os.path.abspath('./demo/p1')
